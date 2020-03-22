@@ -16,13 +16,13 @@ import matplotlib.pyplot as plt
 import matplotlib.font_manager
 from sklearn import svm
 
-xx, yy = np.meshgrid(np.linspace(-5, 5, 500), np.linspace(-5, 5, 500))
+xx, yy = np.meshgrid(np.linspace(-10, 10, 500), np.linspace(-10, 10, 500))
 # Generate train data
-X = 0.3 * np.random.randn(100, 2)
-X_train = np.r_[X + 2, X - 2]
+X = 1.3 * np.random.randn(100, 2)
+X_train = np.r_[X + 2, X - 2, X - 5]
 # Generate some regular novel observations
 X = 0.3 * np.random.randn(20, 2)
-X_test = np.r_[X + 2, X - 2]
+X_test = np.r_[X + 2, X - 2, X - 5]
 # Generate some abnormal novel observations
 X_outliers = np.random.uniform(low=-4, high=4, size=(20, 2))
 
@@ -52,8 +52,8 @@ b2 = plt.scatter(X_test[:, 0], X_test[:, 1], c='blueviolet', s=s,
 c = plt.scatter(X_outliers[:, 0], X_outliers[:, 1], c='gold', s=s,
                 edgecolors='k')
 plt.axis('tight')
-plt.xlim((-5, 5))
-plt.ylim((-5, 5))
+plt.xlim((-10, 10))
+plt.ylim((-10, 10))
 plt.legend([a.collections[0], b1, b2, c],
            ["learned frontier", "training observations",
             "new regular observations", "new abnormal observations"],
